@@ -1,6 +1,6 @@
 # .NET Extension Pack
 
-The .NET Extension Pack is the ultimate collection of extensions for working with .NET resources in VS Code.
+The .NET Extension Pack is the ultimate collection of extensions for working with .NET in VS Code.
 
 ## C# for Visual Studio Code (powered by OmniSharp)
 
