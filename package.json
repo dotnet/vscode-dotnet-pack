@@ -1,0 +1,47 @@
+{
+    "name": "vscode-dotnet-extensionpack",
+    "version": "1.0.0",
+    "publisher": "ms-dotnettools",
+    "author": "Microsoft Corporation",
+    "displayName": ".NET Extension Pack for VS Code",
+    "description": "The ultimate collection of extensions for working with .NET in VS Code!",
+    "license": "SEE LICENSE IN LICENSE",
+    "icon": "dotnet-logo.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dotnet/vscode-dotnet-pack.git"
+    },
+    "homepage": "https://github.com/dotnet/vscode-dotnet-pack",
+    "bugs": {
+        "url": "https://github.com/dotnet/vscode-dotnet-pack/issues"
+    },
+    "keywords": [
+        "dotnet",
+        ".NET",
+        ".NET Core",
+        ".NET Interactive",
+        "C#",
+        "csharp",
+        "F#",
+        "fsharp",
+        "Jupyter",
+        "notebooks",
+        "interactive programming"
+    ],
+    "categories": [
+        "Extension Packs",
+        "Programming Languages",
+        "Debuggers",
+        "Snippets",
+        "Linters",
+        "Notebooks"
+    ],
+    "engines": {
+        "vscode": "^1.46.0"
+    },
+    "extensionPack": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.dotnet-interactive-vscode",
+        "Ionide.Ionide-fsharp"
+    ]
+}
