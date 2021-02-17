@@ -1,0 +1,20 @@
+jobs:
+- job: DotnetExtensionPackCI
+  timeoutInMinutes: 5
+  cancelTimeoutInMinutes: 2
+
+  pool:
+      vmImage: ubuntu-default
+
+  steps:
+  - task: Npm@1
+    displayName: 'Npm install'
+    inputs:
+      command: 'install'
+
+  - task: CmdLine@2
+    displayName: 'Build vsix'
+    inputs:
+      script: |
+        echo Building .NET extension pack vsix...        
+        npx vsce@latest package
