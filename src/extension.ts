@@ -19,7 +19,7 @@ async function initializeExtension(_operationId: string, context: vscode.Extensi
   initUtils(context);
   initCommands(context);
   initExp(context);
-  initializeDependencies(context);
+  initializeDependencies();
   
   const config = vscode.workspace.getConfiguration("dotnet.help");
 
@@ -77,7 +77,7 @@ async function showGettingStartedView(context: vscode.ExtensionContext, _isForce
   }
 
   await vscode.commands.executeCommand("dotnet.gettingStarted");
-  await initializeDependencies(context);
+  await initializeDependencies();
   context.globalState.update("isDotnetGettingStartedPresented", true);
 }
 
