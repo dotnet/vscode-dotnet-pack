@@ -1,2 +1,1 @@
-call npm install --silent -g vsce
-vsce package
+npx vsce@latest package
