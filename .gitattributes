@@ -6,6 +6,7 @@
 * text=auto encoding=UTF-8
 *.sh text eol=lf
 
+
 ###############################################################################
 # Set file behavior to:
 #   treat as text
