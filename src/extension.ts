@@ -19,7 +19,7 @@ async function initializeExtension(_operationId: string, context: vscode.Extensi
   initUtils(context);
   initCommands(context);
   initExp(context);
-  initializeDependencies();
+  initializeDependencies(context);
   
   const config = vscode.workspace.getConfiguration("dotnet.help");
 
