@@ -4,7 +4,7 @@ jobs:
   cancelTimeoutInMinutes: 2
 
   pool:
-      vmImage: ubuntu-default
+      vmImage: 'vs2017-win2016'
 
   steps:
   - task: Npm@1
