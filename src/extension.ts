@@ -31,6 +31,10 @@ async function initializeExtension(_operationId: string, context: vscode.Extensi
 }
 
 async function initializeDependencies() {
+  // Acquire .NET SDK
+  const dotnetSdkVersion = '5.0';
+  initializeDependency("ms-dotnettools.vscode-dotnet-sdk", "dotnet-sdk.acquire", { version: dotnetSdkVersion, requestingExtensionId: 'ms-dotnettools.vscode-dotnet-pack' });
+
   // Start OmniSharp
   initializeDependency("ms-dotnettools.csharp", "o.restart");
 
@@ -38,7 +42,7 @@ async function initializeDependencies() {
   initializeDependency("ms-dotnettools.csharp", "csharp.downloadDebugger");
 }
 
-async function initializeDependency(extensionName: string, command: string) {
+async function initializeDependency(extensionName: string, command: string, commandArgs?: any) {
   var extension =  vscode.extensions.getExtension(extensionName);
   if (extension == undefined) {
     return;
@@ -49,14 +53,14 @@ async function initializeDependency(extensionName: string, command: string) {
     extension.activate().then(
       function(){
         console.log("Extension activated");
-        vscode.commands.executeCommand(command);
+        vscode.commands.executeCommand(command, commandArgs);
       },
       function(){
         console.log("Extension activation failed");
       }
     );   
   } else {
-    vscode.commands.executeCommand(command);
+    vscode.commands.executeCommand(command, commandArgs);
   }
 }
 
