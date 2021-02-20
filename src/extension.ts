@@ -10,12 +10,17 @@ import { HelpViewType } from "./misc";
 import { initialize as initExp } from "./exp";
 import { scheduleAction } from "./utils/scheduler";
 
+const isDotnetGettingStartedPresented = 'isDotnetGettingStartedPresented';
+
 export async function activate(context: vscode.ExtensionContext) {
   initializeTelemetry(context);
   await instrumentOperation("activation", initializeExtension)(context);
 }
 
 async function initializeExtension(_operationId: string, context: vscode.ExtensionContext) {
+  // Clear global state to ensure .NET getting started page gets presented on first view with every new install.
+  context.globalState.update(isDotnetGettingStartedPresented, undefined);
+
   initUtils(context);
   initCommands(context);
   initExp(context);
@@ -76,13 +81,13 @@ async function presentFirstView(context: vscode.ExtensionContext) {
 }
 
 async function showGettingStartedView(context: vscode.ExtensionContext, _isForce: boolean = false) {
-  if (!!context.globalState.get("isDotnetGettingStartedPresented")) {
+  if (!!context.globalState.get(isDotnetGettingStartedPresented)) {
     return;
   }
 
   await vscode.commands.executeCommand("dotnet.gettingStarted");
   await initializeDependencies();
-  context.globalState.update("isDotnetGettingStartedPresented", true);
+  context.globalState.update(isDotnetGettingStartedPresented, true);
 }
 
 function initializeTelemetry(_context: vscode.ExtensionContext) {
