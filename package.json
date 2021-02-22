@@ -38,7 +38,7 @@
     "Notebooks"
   ],
   "engines": {
-    "vscode": "^1.46.0"
+    "vscode": "^1.53.0"
   },
   "extensionPack": [
     "ms-dotnettools.csharp",
@@ -53,6 +53,9 @@
     "onDebugResolve:clr",
     "onLanguage:csharp",
     "onLanguage:aspnetcorerazor",
+    "onNotebook:dotnet-interactive",
+    "onNotebook:dotnet-interactive-jupyter",
+    "onNotebook:jupyter-notebook",
     "workspaceContains:project.json",
     "workspaceContains:*.csproj",
     "workspaceContains:*.sln",
