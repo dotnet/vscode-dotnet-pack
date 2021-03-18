@@ -18,9 +18,6 @@ export async function activate(context: vscode.ExtensionContext) {
 }
 
 async function initializeExtension(_operationId: string, context: vscode.ExtensionContext) {
-  // Clear global state to ensure .NET getting started page gets presented on first view with every new install.
-  context.globalState.update(isDotnetGettingStartedPresented, undefined);
-
   initUtils(context);
   initCommands(context);
   initExp(context);
