@@ -66,13 +66,13 @@ async function initializeDependencies() {
 }
 
 async function initializeDependency(extensionName: string, command: string, commandArgs?: any): Promise<any> {
-  var extension = vscode.extensions.getExtension(extensionName);
-  if (extension == undefined) {
+  const extension = vscode.extensions.getExtension(extensionName);
+  if (extension === undefined) {
     return Promise.resolve();
   }
 
   // is the ext loaded and ready?
-  if (extension.isActive == false) {
+  if (!extension.isActive) {
     return extension.activate().then(
       function () {
         console.log("Extension activated");

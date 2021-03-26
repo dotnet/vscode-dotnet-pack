@@ -3,14 +3,15 @@
 
 import "../../assets/vscode.scss";
 import "bootstrap/js/src/tab";
-const $ = require("jquery");
+import $ from "jquery";
 
-$("#navigationPanel a").click((e: any) => {
-  ($($(e.target).attr("href")||"") as any).tab("show");
+$("#navigationPanel a").on("click", event => {
+  const panelId = $(event.target).attr("href") || "";
+  $(panelId).tab("show");
 });
 
 let os = "win";
-if (navigator.platform.toLowerCase().indexOf("mac") === 0) {
+if (navigator.platform.toLowerCase().includes("mac")) {
   os = "mac";
 }
 
@@ -20,10 +21,10 @@ $(`[data-os=${osToHide}]`).hide();
 declare function acquireVsCodeApi(): any;
 const vscode = acquireVsCodeApi();
 
-$("a[data-toggle='tab']").on("shown.bs.tab", (e: any) => {
+$("a[data-toggle='tab']").on("shown.bs.tab", event => {
   vscode.postMessage({
     command: "tabActivated",
-    tabId: e.target.id
+    tabId: event.target.id
   });
 });
 
@@ -31,8 +32,8 @@ $("a[data-toggle='tab']").on("shown.bs.tab", (e: any) => {
 window.addEventListener("message", event => {
   const message = event.data;
   switch (message.command) {
-      case "tabActivated":
-        ($(message.tabId) as any).tab("show");
-        break;
+    case "tabActivated":
+      $(message.tabId).tab("show");
+      break;
   }
 });
