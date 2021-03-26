@@ -107,6 +107,7 @@
     "lint": "eslint ./src/**/*.ts"
   },
   "devDependencies": {
+    "@types/bootstrap": "^5.0.12",
     "@types/jquery": "^3.5.1",
     "@types/node": "^8.10.63",
     "@types/vscode": "1.46.0",
