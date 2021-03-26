@@ -2,6 +2,7 @@
 // Licensed under the MIT license.
 
 import * as vscode from "vscode";
+import { dotnetsdk } from "vscode-dotnet-runtime";
 import { dispose as disposeTelemetryWrapper, initialize, instrumentOperation } from "vscode-extension-telemetry-wrapper";
 
 import { initialize as initUtils } from "./utils";
@@ -11,10 +12,28 @@ import { initialize as initExp } from "./exp";
 import { scheduleAction } from "./utils/scheduler";
 
 const isDotnetGettingStartedPresented = 'isDotnetGettingStartedPresented';
+const dotnetSdkVersion = '5.0';
 
-export async function activate(context: vscode.ExtensionContext) {
+interface DotnetPackExtensionExports {
+  getDotnetPath(version?: string): Promise<string | undefined>;
+}
+
+export async function activate(context: vscode.ExtensionContext): Promise<DotnetPackExtensionExports> {
   initializeTelemetry(context);
   await instrumentOperation("activation", initializeExtension)(context);
+
+  return {
+    getDotnetPath
+  }
+}
+
+async function getDotnetPath(version?: string) {
+  const request: dotnetsdk.IDotnetAcquireContext = {
+    version: version ?? dotnetSdkVersion,
+    requestingExtensionId: 'ms-dotnettools.vscode-dotnet-pack'
+  };
+  const result = await vscode.commands.executeCommand('dotnet-sdk.acquireStatus', request);
+  return result?.dotnetPath;
 }
 
 async function initializeExtension(_operationId: string, context: vscode.ExtensionContext) {
@@ -22,7 +41,7 @@ async function initializeExtension(_operationId: string, context: vscode.Extensi
   initCommands(context);
   initExp(context);
   initializeDependencies();
-  
+
   const config = vscode.workspace.getConfiguration("dotnet.help");
 
   if (config.get("firstView") !== HelpViewType.None) {
@@ -34,7 +53,6 @@ async function initializeExtension(_operationId: string, context: vscode.Extensi
 
 async function initializeDependencies() {
   // Acquire .NET SDK
-  const dotnetSdkVersion = '5.0';
   const sdkResult = await initializeDependency("ms-dotnettools.vscode-dotnet-sdk", "dotnet-sdk.acquire", { version: dotnetSdkVersion, requestingExtensionId: 'ms-dotnettools.vscode-dotnet-pack' });
 
   // Acquire .NET Interactive
@@ -47,20 +65,20 @@ async function initializeDependencies() {
   initializeDependency("ms-dotnettools.csharp", "csharp.downloadDebugger");
 }
 
-async function initializeDependency(extensionName: string, command: string, commandArgs?: any): Promise<any> {
-  var extension =  vscode.extensions.getExtension(extensionName);
+async function initializeDependency(extensionName: any, command: any, commandArgs?: any): Promise<any> {
+  var extension = vscode.extensions.getExtension(extensionName);
   if (extension == undefined) {
     return Promise.resolve();
   }
 
   // is the ext loaded and ready?
-  if(extension.isActive == false) {
+  if (extension.isActive == false) {
     return extension.activate().then(
-      function(){
+      function () {
         console.log("Extension activated");
         return vscode.commands.executeCommand(command, commandArgs);
       },
-      function(){
+      function () {
         console.log("Extension activation failed");
       }
     );
