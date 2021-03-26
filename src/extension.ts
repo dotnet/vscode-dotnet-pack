@@ -65,7 +65,7 @@ async function initializeDependencies() {
   initializeDependency("ms-dotnettools.csharp", "csharp.downloadDebugger");
 }
 
-async function initializeDependency(extensionName: any, command: any, commandArgs?: any): Promise<any> {
+async function initializeDependency(extensionName: string, command: string, commandArgs?: any): Promise<any> {
   var extension = vscode.extensions.getExtension(extensionName);
   if (extension == undefined) {
     return Promise.resolve();
