@@ -9,35 +9,19 @@ import { sendInfo, instrumentOperation } from "vscode-extension-telemetry-wrappe
 let dotnetGettingStartedView: vscode.WebviewPanel | undefined;
 
 export async function dotnetGettingStartedCmdHandler(context: vscode.ExtensionContext, operationId: string, tabId?: string) {
-  if (dotnetGettingStartedView) {
-    setActiveTab(dotnetGettingStartedView, operationId, tabId);
-    dotnetGettingStartedView.reveal();
+  const editors = vscode.window.visibleTextEditors;
+  if (editors.some(editor => editor.document.fileName.endsWith('.NET getting started.ipynb'))) {
     return;
   }
 
-  dotnetGettingStartedView = vscode.window.createWebviewPanel("dotnet.gettingStarted", ".NET Getting Started", {
-    viewColumn: vscode.ViewColumn.One,
-  }, {
-    enableScripts: true,
-    enableCommandUris: true,
-    retainContextWhenHidden: true
-  });
+  const notebookPath = context.asAbsolutePath(path.join('misc', '.NET getting started.ipynb'));
+  const notebookUri = vscode.Uri.file(notebookPath);
 
-  setActiveTab(dotnetGettingStartedView, operationId, tabId);
-  await initializeDotnetGettingStartedView(context, dotnetGettingStartedView, onDidDisposeWebviewPanel, operationId);
-}
+  await vscode.commands.executeCommand('vscode.openWith', notebookUri, 'dotnet-interactive-jupyter');
 
-function setActiveTab(webviewPanel: vscode.WebviewPanel, operationId: string, tabId?: string) {
-  if (tabId) {
-    sendInfo(operationId, {
-      infoType: "tabActivated",
-      tabId: tabId
-    });
-    webviewPanel.webview.postMessage({
-      command: "tabActivated",
-      tabId,
-    });
-  }
+  // ignore some values to make webpack happy lol
+  operationId;
+  tabId;
 }
 
 function onDidDisposeWebviewPanel() {
