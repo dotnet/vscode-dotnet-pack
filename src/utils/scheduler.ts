@@ -3,7 +3,6 @@
 
 import * as vscode from "vscode";
 import { onIdle } from "./idle";
-import * as _ from "lodash";
 
 interface Action {
   name: string;
@@ -19,7 +18,7 @@ export function initialize(context: vscode.ExtensionContext) {
 
 // This is to queue the actions that need attention from users. One thing at a time, only on idle.
 export function scheduleAction(name: string, isImmediate: boolean = false, isOneTime: boolean = false): Promise<string> {
-  const isPastAction = _.some(actionQueue, (action) => action.name === name) || _.some(pastActions, name);
+  const isPastAction = actionQueue.some(action => action.name === name) || pastActions.includes(name);
   if (isOneTime && isPastAction) {
     return Promise.reject(`Action (${name}) was already scheduled or performed once.`);
   }
@@ -38,7 +37,7 @@ export function scheduleAction(name: string, isImmediate: boolean = false, isOne
 }
 
 function idleHandler() {
-  if (_.isEmpty(actionQueue)) {
+  if (actionQueue.length === 0) {
     return;
   }
 

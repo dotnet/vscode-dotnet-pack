@@ -10,9 +10,13 @@
         "target": "es6",
         "outDir": "out",
         "lib": [
-            "es6",
-            "dom",
-            "ES2016"
+            "ES2015",
+            "ES2016.Array.Include",
+            "ES2017.String",
+            "ES2018.Promise",
+            "DOM",
+            "DOM.Iterable",
+            "WebWorker.ImportScripts"
         ],
         "sourceMap": true,
         "rootDir": "src",
@@ -23,9 +27,8 @@
         "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
         // "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
         "noUnusedParameters": true, /* Report errors on unused parameters. */
+        "allowUnreachableCode": false, /* Report errors on unreachable code. */
         "skipLibCheck": true,
-        "jsx": "react",
-        /* Enabled for React */
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "noImplicitThis": false /* disabled for jQuery */
