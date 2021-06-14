@@ -32,8 +32,13 @@ async function getDotnetPath(version?: string) {
     version: version ?? dotnetSdkVersion,
     requestingExtensionId: 'ms-dotnettools.vscode-dotnet-pack'
   };
-  const result = await vscode.commands.executeCommand('dotnet-sdk.acquireStatus', request);
-  return result?.dotnetPath;
+  const commands = await vscode.commands.getCommands();
+  if (commands.includes('dotnet-sdk.acquireStatus')) {
+    const result = await vscode.commands.executeCommand('dotnet-sdk.acquireStatus', request);
+    return result?.dotnetPath;
+  } else {
+    return undefined;
+  }
 }
 
 async function initializeExtension(_operationId: string, context: vscode.ExtensionContext) {
@@ -58,12 +63,6 @@ async function initializeDependencies() {
 
   // Acquire .NET Interactive
   initializeDependency("ms-dotnettools.dotnet-interactive-vscode", "dotnet-interactive.acquire", sdkResult?.dotnetPath);
-
-  // Start OmniSharp
-  initializeDependency("ms-dotnettools.csharp", "o.restart");
-
-  // Download Debugger
-  initializeDependency("ms-dotnettools.csharp", "csharp.downloadDebugger");
 }
 
 async function initializeDependency(extensionName: string, command: string, commandArgs?: any): Promise<any> {
