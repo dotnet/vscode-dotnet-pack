@@ -43,6 +43,7 @@
   "extensionPack": [
     "ms-dotnettools.csharp",
     "ms-dotnettools.dotnet-interactive-vscode",
+    "ms-toolsai.jupyter",
     "Ionide.Ionide-fsharp"
   ],
   "main": "./out/extension",
