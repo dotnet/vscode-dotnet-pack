@@ -59,7 +59,14 @@ async function initializeExtension(_operationId: string, context: vscode.Extensi
 async function initializeDependencies() {
   // Acquire status for .NET SDK
   // TODO: Once we have an automated pipeline to have the latest SDK bundled with the education pack installer, we can change the below command to "dotnet-sdk.acquire", to get the latest SDK update.
-  const sdkResult = await initializeDependency("ms-dotnettools.vscode-dotnet-sdk", "dotnet-sdk.acquireStatus", { version: dotnetSdkVersion, requestingExtensionId: 'ms-dotnettools.vscode-dotnet-pack' });
+  let sdkResult = await initializeDependency("ms-dotnettools.vscode-dotnet-sdk", "dotnet-sdk.acquireStatus", { version: dotnetSdkVersion, requestingExtensionId: 'ms-dotnettools.vscode-dotnet-pack' });
+  if (!sdkResult?.dotnetPath) {
+    const acquirePromise = initializeDependency("ms-dotnettools.vscode-dotnet-sdk", "dotnet-sdk.acquire", { version: dotnetSdkVersion, requestingExtensionId: 'ms-dotnettools.vscode-dotnet-pack' });
+    sdkResult = await vscode.window.withProgress(
+      { location: vscode.ProgressLocation.Notification, title: 'Acquiring latest .NET SDK...' },
+      (_progress, _token) => acquirePromise
+    );
+  }
 
   // Acquire .NET Interactive
   initializeDependency("ms-dotnettools.dotnet-interactive-vscode", "dotnet-interactive.acquire", sdkResult?.dotnetPath);
