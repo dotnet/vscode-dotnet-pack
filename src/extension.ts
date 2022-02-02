@@ -45,7 +45,6 @@ async function initializeExtension(_operationId: string, context: vscode.Extensi
   initUtils(context);
   initCommands(context);
   initExp(context);
-  initializeDependencies();
 
   const config = vscode.workspace.getConfiguration("dotnet.help");
 
@@ -53,44 +52,6 @@ async function initializeExtension(_operationId: string, context: vscode.Extensi
     scheduleAction("showFirstView", true).then(() => {
       presentFirstView(context);
     });
-  }
-}
-
-async function initializeDependencies() {
-  // Acquire status for .NET SDK
-  // TODO: Once we have an automated pipeline to have the latest SDK bundled with the education pack installer, we can change the below command to "dotnet-sdk.acquire", to get the latest SDK update.
-  let sdkResult = await initializeDependency("ms-dotnettools.vscode-dotnet-sdk", "dotnet-sdk.acquireStatus", { version: dotnetSdkVersion, requestingExtensionId: 'ms-dotnettools.vscode-dotnet-pack' });
-  if (!sdkResult?.dotnetPath) {
-    const acquirePromise = initializeDependency("ms-dotnettools.vscode-dotnet-sdk", "dotnet-sdk.acquire", { version: dotnetSdkVersion, requestingExtensionId: 'ms-dotnettools.vscode-dotnet-pack' });
-    sdkResult = await vscode.window.withProgress(
-      { location: vscode.ProgressLocation.Notification, title: 'Acquiring latest .NET SDK...' },
-      (_progress, _token) => acquirePromise
-    );
-  }
-
-  // Acquire .NET Interactive
-  initializeDependency("ms-dotnettools.dotnet-interactive-vscode", "dotnet-interactive.acquire", sdkResult?.dotnetPath);
-}
-
-async function initializeDependency(extensionName: string, command: string, commandArgs?: any): Promise<any> {
-  const extension = vscode.extensions.getExtension(extensionName);
-  if (extension === undefined) {
-    return Promise.resolve();
-  }
-
-  // is the ext loaded and ready?
-  if (!extension.isActive) {
-    return extension.activate().then(
-      function () {
-        console.log("Extension activated");
-        return vscode.commands.executeCommand(command, commandArgs);
-      },
-      function () {
-        console.log("Extension activation failed");
-      }
-    );
-  } else {
-    return vscode.commands.executeCommand(command, commandArgs);
   }
 }
 
@@ -111,7 +72,6 @@ async function showGettingStartedView(context: vscode.ExtensionContext, _isForce
   }
 
   await vscode.commands.executeCommand("dotnet.gettingStarted");
-  await initializeDependencies();
   context.globalState.update(isDotnetGettingStartedPresented, true);
 }
 
