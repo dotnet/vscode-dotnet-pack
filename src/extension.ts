@@ -7,11 +7,8 @@ import { dispose as disposeTelemetryWrapper, initialize, instrumentOperation } f
 
 import { initialize as initUtils } from "./utils";
 import { initialize as initCommands } from "./commands";
-import { HelpViewType } from "./misc";
 import { initialize as initExp } from "./exp";
-import { scheduleAction } from "./utils/scheduler";
 
-const isDotnetGettingStartedPresented = 'isDotnetGettingStartedPresented';
 const dotnetSdkVersion = '6.0';
 
 interface DotnetPackExtensionExports {
@@ -45,34 +42,6 @@ async function initializeExtension(_operationId: string, context: vscode.Extensi
   initUtils(context);
   initCommands(context);
   initExp(context);
-
-  const config = vscode.workspace.getConfiguration("dotnet.help");
-
-  if (config.get("firstView") !== HelpViewType.None) {
-    scheduleAction("showFirstView", true).then(() => {
-      presentFirstView(context);
-    });
-  }
-}
-
-async function presentFirstView(context: vscode.ExtensionContext) {
-  const config = vscode.workspace.getConfiguration("dotnet.help");
-  const firstView = config.get("firstView");
-  switch (firstView) {
-    case HelpViewType.None:
-      break;
-    default:
-      await showGettingStartedView(context);
-  }
-}
-
-async function showGettingStartedView(context: vscode.ExtensionContext, _isForce: boolean = false) {
-  if (!!context.globalState.get(isDotnetGettingStartedPresented)) {
-    return;
-  }
-
-  await vscode.commands.executeCommand("dotnet.gettingStarted");
-  context.globalState.update(isDotnetGettingStartedPresented, true);
 }
 
 function initializeTelemetry(_context: vscode.ExtensionContext) {
