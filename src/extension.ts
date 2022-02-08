@@ -13,6 +13,7 @@ import { scheduleAction } from "./utils/scheduler";
 
 const isDotnetGettingStartedPresented = 'isDotnetGettingStartedPresented';
 const dotnetSdkVersion = '6.0';
+let gettingStartedShownByActivation = false;
 
 interface DotnetPackExtensionExports {
   getDotnetPath(version?: string): Promise<string | undefined>;
@@ -42,6 +43,7 @@ async function getDotnetPath(version?: string) {
 }
 
 async function initializeExtension(_operationId: string, context: vscode.ExtensionContext) {
+  await initUrlHandler(context);
   initUtils(context);
   initCommands(context);
   initExp(context);
@@ -53,6 +55,21 @@ async function initializeExtension(_operationId: string, context: vscode.Extensi
       presentFirstView(context);
     });
   }
+}
+
+async function initUrlHandler(context: vscode.ExtensionContext) {
+  context.subscriptions.push(
+    vscode.window.registerUriHandler({
+      handleUri: async (uri: vscode.Uri) => {
+        switch (uri.path) {
+          case '/gettingStarted':
+            if (!gettingStartedShownByActivation) {
+              await vscode.commands.executeCommand("dotnet.gettingStarted");
+            }
+            break;
+        }
+      }
+    }));
 }
 
 async function presentFirstView(context: vscode.ExtensionContext) {
@@ -72,6 +89,7 @@ async function showGettingStartedView(context: vscode.ExtensionContext, _isForce
   }
 
   await vscode.commands.executeCommand("dotnet.gettingStarted");
+  gettingStartedShownByActivation = true;
   context.globalState.update(isDotnetGettingStartedPresented, true);
 }
 

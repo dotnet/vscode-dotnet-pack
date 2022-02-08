@@ -1,6 +1,6 @@
 {
   "name": "vscode-dotnet-pack",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "preview": true,
   "publisher": "ms-dotnettools",
   "author": "Microsoft Corporation",
@@ -48,6 +48,7 @@
   ],
   "main": "./out/extension",
   "activationEvents": [
+    "onUri",
     "onDebugInitialConfigurations",
     "onDebugResolve:blazorwasm",
     "onDebugResolve:coreclr",
