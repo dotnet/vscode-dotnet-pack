@@ -4,7 +4,7 @@
 import * as vscode from "vscode";
 import * as path from "path";
 
-export async function dotnetGettingStartedCmdHandler(context: vscode.ExtensionContext, operationId: string, tabId?: string) {
+export async function dotnetGettingStartedCmdHandler(context: vscode.ExtensionContext) {
   const editors = vscode.window.visibleTextEditors;
   if (editors.some(editor => editor.document.fileName.endsWith('Getting Started with .NET.dib'))) {
     return;
@@ -14,8 +14,4 @@ export async function dotnetGettingStartedCmdHandler(context: vscode.ExtensionCo
   const notebookUri = vscode.Uri.file(notebookPath);
 
   await vscode.commands.executeCommand('vscode.openWith', notebookUri, 'dotnet-interactive');
-
-  // ignore some values to make webpack happy lol
-  operationId;
-  tabId;
 }
