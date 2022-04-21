@@ -99,7 +99,56 @@
           "scope": "window"
         }
       }
-    }
+    },
+    "walkthroughs": [
+      {
+        "id": "vscode-dotnet-pack-getting-started",
+        "title": "Getting Started with .NET",
+        "description": "A walkthrough to help you get the most out of the .NET tooling.",
+        "steps": [
+          {
+            "id": "vscode-dotnet-pack-getting-started-notebooks",
+            "title": "Notebooks",
+            "description": "Search to make or import a notebook.",
+            "media": {
+              "markdown": "media/notebooks.md"
+            }
+          },
+          {
+            "id": "vscode-dotnet-pack-getting-started-keyboard-shortcuts",
+            "title": "Keyboard Shortcuts",
+            "description": "Need to get something done fast? Use a keyboard shortcut.",
+            "media": {
+              "markdown": "media/keyboard-shortcuts.md"
+            }
+          },
+          {
+            "id": "vscode-dotnet-pack-getting-started-where-to-start",
+            "title": "Where to Start",
+            "description": "Not sure where to start learning how to code and build apps? ",
+            "media": {
+              "markdown": "media/where-to-start.md"
+            }
+          },
+          {
+            "id": "vscode-dotnet-pack-getting-started-sample-apps",
+            "title": "Sample Apps",
+            "description": "GitHub has sample code for whether you want to brush up or learn something new.",
+            "media": {
+              "markdown": "media/sample-apps.md"
+            }
+          },
+          {
+            "id": "vscode-dotnet-pack-getting-started-new-to-vscode",
+            "title": "New to Visual Studio Code",
+            "description": "Take a video tour!",
+            "media": {
+              "markdown": "media/new-to-vscode.md"
+            }
+          }
+        ]
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run build",
