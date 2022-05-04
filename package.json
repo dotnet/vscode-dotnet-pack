@@ -109,7 +109,7 @@
           {
             "id": "vscode-dotnet-pack-getting-started-notebooks",
             "title": "Notebooks",
-            "description": "Search to make or import a notebook.",
+            "description": "Search to make or import a notebook.\n[Open Command Palette](command:workbench.action.showCommands)",
             "media": {
               "markdown": "media/notebooks.md"
             }
@@ -117,7 +117,7 @@
           {
             "id": "vscode-dotnet-pack-getting-started-keyboard-shortcuts",
             "title": "Keyboard Shortcuts",
-            "description": "Need to get something done fast? Use a keyboard shortcut.",
+            "description": "Need to get something done fast? Use a keyboard shortcut.\n[Find Keyboard Shortcuts](command:toSide:workbench.action.openGlobalKeybindings)",
             "media": {
               "markdown": "media/keyboard-shortcuts.md"
             }
@@ -125,7 +125,7 @@
           {
             "id": "vscode-dotnet-pack-getting-started-where-to-start",
             "title": "Where to Start",
-            "description": "Not sure where to start learning how to code and build apps? ",
+            "description": "Not sure where to start learning how to code and build apps? \n[Go to Microsoft Learn](https://docs.microsoft.com/learn/dotnet/)",
             "media": {
               "markdown": "media/where-to-start.md"
             }
@@ -133,7 +133,7 @@
           {
             "id": "vscode-dotnet-pack-getting-started-sample-apps",
             "title": "Sample Apps",
-            "description": "GitHub has sample code for whether you want to brush up or learn something new.",
+            "description": "GitHub has sample code for whether you want to brush up or learn something new.\n[Beginner C# Notebooks](https://github.com/dotnet/csharp-notebooks)",
             "media": {
               "markdown": "media/sample-apps.md"
             }
@@ -141,7 +141,7 @@
           {
             "id": "vscode-dotnet-pack-getting-started-new-to-vscode",
             "title": "New to Visual Studio Code",
-            "description": "Take a video tour!",
+            "description": "Take a video tour!\n[Go to Video](https://aka.ms/vscode-getting-started-video)",
             "media": {
               "markdown": "media/new-to-vscode.md"
             }
