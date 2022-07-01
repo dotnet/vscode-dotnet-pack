@@ -107,11 +107,19 @@
         "description": "A walkthrough to help you get the most out of the .NET tooling.",
         "steps": [
           {
+            "id": "vscode-dotnet-sdk",
+            "title": "Get the .NET SDK",
+            "description": "The .NET Extension Pack requires the .NET SDK to be installed.\n[Install .NET SDK](https://dotnet.microsoft.com/download)",
+            "media": {
+              "markdown": "media/install-sdk.md"
+            }
+          },
+          {
             "id": "vscode-dotnet-pack-getting-started-notebooks",
             "title": "Notebooks",
-            "description": "Search to make or import a notebook.\n[Open Command Palette](command:workbench.action.showCommands)",
+            "description": "Search to create a new notebook or open an existing notebook.\n[Open Command Palette](command:workbench.action.showCommands)",
             "media": {
-              "markdown": "media/notebooks.md"
+              "markdown": "media/search.gif"
             }
           },
           {
@@ -119,7 +127,7 @@
             "title": "Keyboard Shortcuts",
             "description": "Need to get something done fast? Use a keyboard shortcut.\n[Find Keyboard Shortcuts](command:toSide:workbench.action.openGlobalKeybindings)",
             "media": {
-              "markdown": "media/keyboard-shortcuts.md"
+              "markdown": "media/keyboard-shortcuts.gif"
             }
           },
           {
@@ -132,10 +140,10 @@
           },
           {
             "id": "vscode-dotnet-pack-getting-started-sample-apps",
-            "title": "Sample Apps",
-            "description": "GitHub has sample code for whether you want to brush up or learn something new.\n[Beginner C# Notebooks](https://github.com/dotnet/csharp-notebooks)",
+            "title": "Learn to Code in C#",
+            "description": "Browse some notebooks to learn to code with C#. You can interact with the code snippets and then run them by pressing the play button on the left of each snippet.\n[Beginner C# Notebooks](https://github.com/dotnet/csharp-notebooks)",
             "media": {
-              "markdown": "media/sample-apps.md"
+              "markdown": "media/csharp-notebooks.gif"
             }
           },
           {
@@ -143,7 +151,7 @@
             "title": "New to Visual Studio Code",
             "description": "Take a video tour!\n[Go to Video](https://aka.ms/vscode-getting-started-video)",
             "media": {
-              "markdown": "media/new-to-vscode.md"
+              "markdown": "media/vscode-intro-videos.png"
             }
           }
         ]
