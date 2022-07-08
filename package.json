@@ -118,7 +118,7 @@
           {
             "id": "vscode-dotnet-pack-getting-started-sample-apps",
             "title": "Where to Start",
-            "description": "Browse some notebooks to learn to code with C#. You can interact with the code snippets and then run them by pressing the play button on the left of each snippet.\n[Beginner C# Notebooks](https://aka.ms/dotnet-extensionpack-csharp-notebooks)",
+            "description": "Browse the beginner C# notebooks to learn to code with C#. Click on the button to find our repository of beginner C# content. Simply click on the Notebook Link to open in Visual Studio Code.\n[Beginner C# Notebooks](https://aka.ms/dotnet-extensionpack-csharp-notebooks)",
             "media": {
               "markdown": "media/where-to-start.md"
             }
@@ -134,7 +134,7 @@
           {
             "id": "vscode-dotnet-pack-getting-started-notebooks",
             "title": "Interactive Notebooks",
-            "description": "With the .NET Extension Pack, you can use interactive notebooks! Create a new notebook by opening the command palette and selecting '.NET Interactive: Create new blank notebook'. \n[Open Command Palette](command:workbench.action.showCommands)",
+            "description": "With the .NET Extension Pack, you can use interactive notebooks to experiment with code! Create a new notebook by opening the command palette and selecting '.NET Interactive: Create new blank notebook'. \n[Open Command Palette](command:workbench.action.showCommands)",
             "media": {
               "markdown": "media/notebooks.md"
             }
