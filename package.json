@@ -68,7 +68,8 @@
     "workspaceContains:**/*.csx",
     "workspaceContains:**/*.cake",
     "onCommand:dotnet.gettingStarted",
-    "onWebviewPanel:dotnet.gettingStarted"
+    "onWebviewPanel:dotnet.gettingStarted",
+    "onWalkthrough:vscode-dotnet-pack-getting-started"
   ],
   "contributes": {
     "commands": [
