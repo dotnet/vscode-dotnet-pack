@@ -3,14 +3,15 @@ jobs:
   timeoutInMinutes: 30
   cancelTimeoutInMinutes: 2
   variables:
-  # Force CodeQL enabled so it may be run on any branch
-  - name: Codeql.Enabled
-    value: true
-  # Do not let CodeQL 3000 Extension gate scan frequency
-  - name: Codeql.Cadence
-    value: 0
-  - name: Codeql.TSAEnabled
-    value: true 
+  - ${{ if and(notin(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/main')) }}:
+    # Force CodeQL enabled so it may be run on any branch
+    - name: Codeql.Enabled
+      value: true
+    # Do not let CodeQL 3000 Extension gate scan frequency
+    - name: Codeql.Cadence
+      value: 0
+    - name: Codeql.TSAEnabled
+      value: true 
   pool:
       vmImage: 'windows-2022'
 
@@ -19,10 +20,11 @@ jobs:
     inputs:
       versionSpec: '14.x'
     displayName: 'Install Node.js'
- 
-  - task: UseDotNet@2
-  - task: CodeQL3000Init@0
-    displayName: CodeQL Initialize 
+  
+  - ${{ if and(notin(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/main')) }}:
+    - task: UseDotNet@2
+    - task: CodeQL3000Init@0
+      displayName: CodeQL Initialize 
 
   - script: |
       npm ci
@@ -35,8 +37,9 @@ jobs:
         echo Building .NET extension pack vsix...
         npx vsce@latest package
 
-  - task: CodeQL3000Finalize@0
-    displayName: CodeQL Finalize
+  - ${{ if and(notin(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/main')) }}:
+    - task: CodeQL3000Finalize@0
+      displayName: CodeQL Finalize
         
   - task: CopyFiles@2
     inputs:
