@@ -13,5 +13,5 @@ export async function dotnetGettingStartedCmdHandler(context: vscode.ExtensionCo
   const notebookPath = context.asAbsolutePath(path.join('misc', 'Getting Started with .NET.dib'));
   const notebookUri = vscode.Uri.file(notebookPath);
 
-  await vscode.commands.executeCommand('vscode.openWith', notebookUri, 'dotnet-interactive');
+  await vscode.commands.executeCommand('vscode.openWith', notebookUri, 'polyglot-notebook');
 }
