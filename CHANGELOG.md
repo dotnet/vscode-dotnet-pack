@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.10
+- [Upgrade extension pack to depend on .NET 7](https://github.com/dotnet/vscode-dotnet-pack/pull/393)
+
 ## 1.0.9 
 - [Add walkthrough](https://github.com/dotnet/vscode-dotnet-pack/pull/101)
 - [Remove unused dependencies](https://github.com/dotnet/vscode-dotnet-pack/pull/59)
