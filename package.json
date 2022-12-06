@@ -57,6 +57,7 @@
     "onLanguage:aspnetcorerazor",
     "onNotebook:dotnet-interactive",
     "onNotebook:dotnet-interactive-jupyter",
+    "onNotebook:polyglot-notebook",
     "onNotebook:jupyter-notebook",
     "workspaceContains:project.json",
     "workspaceContains:*.csproj",
@@ -106,7 +107,7 @@
         "id": "vscode-dotnet-pack-getting-started",
         "title": "Getting Started with .NET",
         "description": "A walkthrough to help you get the most out of the .NET tooling.",
-        "when":"true",
+        "when": "true",
         "steps": [
           {
             "id": "vscode-dotnet-sdk",
