@@ -21,6 +21,8 @@
     ".NET",
     ".NET Core",
     ".NET Interactive",
+    "dotnet Interactive",
+    "Polyglot Notebooks",
     "C#",
     "csharp",
     "F#",

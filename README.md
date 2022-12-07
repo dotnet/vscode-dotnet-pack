@@ -15,7 +15,7 @@ The C# extension is powered by [OmniSharp](https://github.com/OmniSharp/omnishar
 
 ## .NET Interactive Notebooks
 
-[.NET Interactive Notebooks extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode) provides support for using .NET Interactive in a Visual Studio Code notebook. .NET Interactive takes the power of .NET and embeds it into *your* interactive experiences. Share code, explore data, write, and learn across your apps in ways you couldn't before.
+[Polyglot Notebooks extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode) provides support for using Polyglot Notebooks in a Visual Studio Code notebook. Polyglot Notebooks takes the power of .NET and embeds it into *your* interactive experiences. Share code, explore data, write, and learn across your apps in ways you couldn't before.
 
 - [Notebooks](#notebooks-with-net): Jupyter, nteract, and Visual Studio Code 
 - [Code bots](https://github.com/CodeConversations/CodeConversations)
