@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.12
+- [Update readme and tags](https://github.com/dotnet/vscode-dotnet-pack/pull/404)
+
 ## 1.0.11
 - [Update commands and activation events](https://github.com/dotnet/vscode-dotnet-pack/pull/399)
 
