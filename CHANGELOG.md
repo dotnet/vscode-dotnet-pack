@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.12
+- [Update readme and tags](https://github.com/dotnet/vscode-dotnet-pack/pull/404)
+
+## 1.0.11
+- [Update commands and activation events](https://github.com/dotnet/vscode-dotnet-pack/pull/399)
+
+## 1.0.10
+- [Upgrade extension pack to depend on .NET 7](https://github.com/dotnet/vscode-dotnet-pack/pull/393)
+
 ## 1.0.9 
 - [Add walkthrough](https://github.com/dotnet/vscode-dotnet-pack/pull/101)
 - [Remove unused dependencies](https://github.com/dotnet/vscode-dotnet-pack/pull/59)

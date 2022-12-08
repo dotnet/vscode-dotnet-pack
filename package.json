@@ -1,6 +1,6 @@
 {
   "name": "vscode-dotnet-pack",
-  "version": "1.0.9",
+  "version": "1.0.12",
   "preview": true,
   "publisher": "ms-dotnettools",
   "author": "Microsoft Corporation",
@@ -21,6 +21,8 @@
     ".NET",
     ".NET Core",
     ".NET Interactive",
+    "dotnet Interactive",
+    "Polyglot Notebooks",
     "C#",
     "csharp",
     "F#",
@@ -38,7 +40,7 @@
     "Notebooks"
   ],
   "engines": {
-    "vscode": "^1.53.0"
+    "vscode": "^1.74.0"
   },
   "extensionPack": [
     "ms-dotnettools.csharp",
@@ -57,6 +59,7 @@
     "onLanguage:aspnetcorerazor",
     "onNotebook:dotnet-interactive",
     "onNotebook:dotnet-interactive-jupyter",
+    "onNotebook:polyglot-notebook",
     "onNotebook:jupyter-notebook",
     "workspaceContains:project.json",
     "workspaceContains:*.csproj",
@@ -106,7 +109,7 @@
         "id": "vscode-dotnet-pack-getting-started",
         "title": "Getting Started with .NET",
         "description": "A walkthrough to help you get the most out of the .NET tooling.",
-        "when":"true",
+        "when": "true",
         "steps": [
           {
             "id": "vscode-dotnet-sdk",
