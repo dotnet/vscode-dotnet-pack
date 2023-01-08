@@ -68,8 +68,7 @@
     "workspaceContains:**/*.csx",
     "workspaceContains:**/*.cake",
     "onCommand:dotnet.gettingStarted",
-    "onWebviewPanel:dotnet.gettingStarted",
-    "onWalkthrough:vscode-dotnet-pack-getting-started"
+    "onWebviewPanel:dotnet.gettingStarted"
   ],
   "contributes": {
     "commands": [
@@ -106,44 +105,43 @@
         "id": "vscode-dotnet-pack-getting-started",
         "title": "Getting Started with .NET",
         "description": "A walkthrough to help you get the most out of the .NET tooling.",
-        "when":"true",
         "steps": [
           {
-            "id": "vscode-dotnet-sdk",
-            "title": "Get the .NET SDK",
-            "description": "The .NET Extension Pack requires the .NET SDK to be installed.\n[Install .NET SDK](https://aka.ms/dotnet-extensionpack-sdk)",
-            "media": {
-              "markdown": "media/install-sdk.md"
-            }
-          },
-          {
-            "id": "vscode-dotnet-pack-getting-started-sample-apps",
-            "title": "Where to Start",
-            "description": "Browse the beginner C# notebooks to learn to code with C#. Click on the button to find our repository of beginner C# content. Simply click on the Notebook Link to open in Visual Studio Code.\n[Beginner C# Notebooks](https://aka.ms/dotnet-extensionpack-csharp-notebooks)",
-            "media": {
-              "markdown": "media/where-to-start.md"
-            }
-          },
-          {
-            "id": "vscode-dotnet-pack-getting-started-where-to-start",
-            "title": "Build an App",
-            "description": "Not sure where to start learning how to code and build apps? Microsoft Learn has courses to teach you how to build web apps, mobile apps, and more! \n[Go to Microsoft Learn](https://aka.ms/dotnet-extensionpack-mslearn)",
-            "media": {
-              "markdown": "media/build-an-app.md"
-            }
-          },
-          {
             "id": "vscode-dotnet-pack-getting-started-notebooks",
-            "title": "Interactive Notebooks",
-            "description": "With the .NET Extension Pack, you can use interactive notebooks to experiment with code! Create a new notebook by opening the command palette and selecting '.NET Interactive: Create new blank notebook'. \n[Open Command Palette](command:workbench.action.showCommands)",
+            "title": "Notebooks",
+            "description": "Search to make or import a notebook.",
             "media": {
               "markdown": "media/notebooks.md"
             }
           },
           {
+            "id": "vscode-dotnet-pack-getting-started-keyboard-shortcuts",
+            "title": "Keyboard Shortcuts",
+            "description": "Need to get something done fast? Use a keyboard shortcut.",
+            "media": {
+              "markdown": "media/keyboard-shortcuts.md"
+            }
+          },
+          {
+            "id": "vscode-dotnet-pack-getting-started-where-to-start",
+            "title": "Where to Start",
+            "description": "Not sure where to start learning how to code and build apps? ",
+            "media": {
+              "markdown": "media/where-to-start.md"
+            }
+          },
+          {
+            "id": "vscode-dotnet-pack-getting-started-sample-apps",
+            "title": "Sample Apps",
+            "description": "GitHub has sample code for whether you want to brush up or learn something new.",
+            "media": {
+              "markdown": "media/sample-apps.md"
+            }
+          },
+          {
             "id": "vscode-dotnet-pack-getting-started-new-to-vscode",
             "title": "New to Visual Studio Code",
-            "description": "New to Visual Studio Code? Take a video tour! Watch our introductory videos on the VS Code documentation.\n[Go to Video](https://aka.ms/dotnet-extensionpack-vscode)",
+            "description": "Take a video tour!",
             "media": {
               "markdown": "media/new-to-vscode.md"
             }
