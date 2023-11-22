@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.13
+- [Upgrade extension pack to depend on .NET 8](https://github.com/dotnet/vscode-dotnet-pack/pull/406)
+
 ## 1.0.12
 - [Update readme and tags](https://github.com/dotnet/vscode-dotnet-pack/pull/404)
 
