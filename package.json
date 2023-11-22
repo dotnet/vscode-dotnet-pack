@@ -40,7 +40,7 @@
     "Notebooks"
   ],
   "engines": {
-    "vscode": "^1.74.0"
+    "vscode": "^1.83.0"
   },
   "extensionPack": [
     "ms-dotnettools.csharp",
