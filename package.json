@@ -1,6 +1,6 @@
 {
   "name": "vscode-dotnet-pack",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "preview": true,
   "publisher": "ms-dotnettools",
   "author": "Microsoft Corporation",
@@ -40,7 +40,7 @@
     "Notebooks"
   ],
   "engines": {
-    "vscode": "^1.74.0"
+    "vscode": "^1.83.0"
   },
   "extensionPack": [
     "ms-dotnettools.csharp",

@@ -12,7 +12,7 @@ import { initialize as initExp } from "./exp";
 import { scheduleAction } from "./utils/scheduler";
 
 const isDotnetGettingStartedPresented = 'isDotnetGettingStartedPresented';
-const dotnetSdkVersion = '7.0';
+const dotnetSdkVersion = '8.0';
 let gettingStartedShownByActivation = false;
 
 interface DotnetPackExtensionExports {
