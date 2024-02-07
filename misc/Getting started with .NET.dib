@@ -43,6 +43,7 @@ You can also re-assign different values to a variable, like so:
 
 #!csharp
 
+string aFriend;
 aFriend = "Maira";
 Console.WriteLine(aFriend);
 
